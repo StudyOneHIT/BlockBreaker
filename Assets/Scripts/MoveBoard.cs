@@ -5,26 +5,56 @@ using UnityEngine;
 public class MoveBoard : MonoBehaviour {
 
     public float MoveSpeed;
-    public float border;
+    //public float border;
+	public GameObject leftCircle;
+	public GameObject box;
+	public GameObject rightCircle;
+    private Resolution[] res;
+    private Rigidbody2D rb;
+
+	void ScaleLonger () {
+		box.transform.localScale += new Vector3(0.1F, 0, 0);
+        leftCircle.transform.localPosition -= new Vector3(0.4F, 0, 0);
+        rightCircle.transform.localPosition += new Vector3(0.4F, 0, 0);
+	}
 
 	// Use this for initialization
 	void Start () {
-        
+        res = Screen.resolutions;
+        rb = GetComponent<Rigidbody2D>();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        float ix = Input.acceleration.x;
+        
+        // Keyboard
         float h = Input.GetAxis("Horizontal");
-        float x = transform.position.x;
-
         if (h != 0)
-            transform.Translate(Vector3.right * h * MoveSpeed);
+            rb.MovePosition(rb.position + Vector2.right * h * MoveSpeed);
+
+        /*
+        // Touch screen
+        Touch touch = Input.GetTouch(0);
+        float ix = touch.position.x;
         if (ix != 0)
-            transform.Translate(Vector3.right * ix * MoveSpeed);
+        {
+            if (ix < res[0].width / 2)
+            {
+                transform.Translate(Vector3.left * MoveSpeed);
+            }
+            else
+            {
+                transform.Translate(Vector3.right * MoveSpeed);
+            }
+        }
+        */
+        
+        /*
         if (transform.position.x > border)
             transform.position = new Vector3(border, transform.position.y, transform.position.z);
         if (transform.position.x < -border)
             transform.position = new Vector3(-border, transform.position.y, transform.position.z);
+            */
     }
 }

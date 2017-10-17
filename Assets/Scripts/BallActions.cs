@@ -5,42 +5,36 @@ using UnityEngine;
 public class BallActions : MonoBehaviour {
 
     public GameObject board;
-    public float offset;
+    public float distBallBoard;
     public float ShootSpeed;
-    public float move;
 
-    private bool started;
-    private Rigidbody2D rb;
+    public static Rigidbody2D rb;
+
 
     // Use this for initialization
     void Start () {
-        started = false;
+        
         rb = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!started)
+		if (!GameController.instance.started)
         {
-            transform.position = board.transform.position + new Vector3(0, offset, 0);
+            transform.position = board.transform.position + new Vector3(0, distBallBoard, 0);
             if (Input.GetKey("space"))
             {
                 rb.velocity = new Vector3(0, ShootSpeed, 0);
-                started = true;
+                GameController.instance.started = true;
             }
         }
 	}
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Board")
+        if (collision.gameObject.name == "Bottom")
         {
-            Vector3 offset = transform.position - board.transform.position;
-            rb.velocity += new Vector2(offset.x * move, 0);
-        }
-        else if (collision.gameObject.name == "Bottom")
-        {
-            started = false;
+            GameController.instance.started = false;
         }
     }
 
