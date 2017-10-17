@@ -9,6 +9,7 @@ TagManager:
   - Ball
   - Brick
   - Board
+  - BoardBox
   layers:
   - Default
   - TransparentFX
