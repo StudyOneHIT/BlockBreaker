@@ -10,10 +10,12 @@ public class BallActions : MonoBehaviour {
 
     public static Rigidbody2D rb;
 
+	private AudioSource audio;
+
 
     // Use this for initialization
     void Start () {
-        
+		audio = GetComponent<AudioSource> ();
         rb = GetComponent<Rigidbody2D>();
 	}
 	
@@ -28,6 +30,14 @@ public class BallActions : MonoBehaviour {
                 GameController.instance.started = true;
             }
         }
+	}
+
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (GameController.instance.started && collision.gameObject.tag == "Board") 
+		{
+			audio.Play ();
+		}
 	}
 
     void OnCollisionExit2D(Collision2D collision)

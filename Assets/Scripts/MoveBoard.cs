@@ -5,24 +5,28 @@ using UnityEngine;
 public class MoveBoard : MonoBehaviour {
 
     public float MoveSpeed;
-    //public float border;
 	public GameObject leftCircle;
 	public GameObject box;
 	public GameObject rightCircle;
-    private Resolution[] res;
-    private Rigidbody2D rb;
 
-	void ScaleLonger () {
-		box.transform.localScale += new Vector3(0.1F, 0, 0);
-        leftCircle.transform.localPosition -= new Vector3(0.4F, 0, 0);
-        rightCircle.transform.localPosition += new Vector3(0.4F, 0, 0);
+	private AudioSource myaudio;
+    private Resolution[] res;    
+	private Rigidbody2D rb;
+	private float BorderPos;
+
+	void MyScale (float scale) {
+		box.transform.localScale += new Vector3(scale * 0.1F, 0, 0);
+        leftCircle.transform.localPosition -= new Vector3(scale * 0.4F, 0, 0);
+        rightCircle.transform.localPosition += new Vector3(scale * 0.4F, 0, 0);
+		BorderPos -= scale * 0.4F;
 	}
 
 	// Use this for initialization
 	void Start () {
         res = Screen.resolutions;
-        rb = GetComponent<Rigidbody2D>();
-
+		myaudio = GetComponent<AudioSource> ();
+        //rb = GetComponent<Rigidbody2D>();
+		BorderPos = 4.31F;
 	}
 	
 	// Update is called once per frame
@@ -31,7 +35,8 @@ public class MoveBoard : MonoBehaviour {
         // Keyboard
         float h = Input.GetAxis("Horizontal");
         if (h != 0)
-            rb.MovePosition(rb.position + Vector2.right * h * MoveSpeed);
+            //rb.MovePosition(rb.position + Vector2.right * h * MoveSpeed);
+			transform.position += new Vector3(h * MoveSpeed, 0, 0);
 
         /*
         // Touch screen
@@ -50,11 +55,16 @@ public class MoveBoard : MonoBehaviour {
         }
         */
         
-        /*
-        if (transform.position.x > border)
-            transform.position = new Vector3(border, transform.position.y, transform.position.z);
-        if (transform.position.x < -border)
-            transform.position = new Vector3(-border, transform.position.y, transform.position.z);
-            */
+        
+		if (transform.position.x > BorderPos)
+			transform.position = new Vector3(BorderPos, transform.position.y, transform.position.z);
+        if (transform.position.x < -BorderPos)
+            transform.position = new Vector3(-BorderPos, transform.position.y, transform.position.z);
     }
+
+	void OnCollisionEnter2D(Collision2D c) {
+		print ("aaa");
+		myaudio.Play ();
+	}
+
 }
