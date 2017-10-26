@@ -89,10 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4f259ab43e6ee47af24547a34f48ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  board: {fileID: 0}
-  offset: 0.53
+  distBallBoard: 0.525
   ShootSpeed: 15
-  move: 2
 --- !u!212 &212592450201199840
 SpriteRenderer:
   m_ObjectHideFlags: 1
