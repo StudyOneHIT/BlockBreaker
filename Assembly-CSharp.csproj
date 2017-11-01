@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\BrickThreeTimes.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GameText.cs" />
+     <Compile Include="Assets\Scripts\ItemFirstVelocity.cs" />
      <Compile Include="Assets\Scripts\LevelSelector.cs" />
      <Compile Include="Assets\Scripts\SoundButton.cs" />
  <Reference Include="UnityEngine.UI">

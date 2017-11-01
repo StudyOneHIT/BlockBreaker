@@ -1,20 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class LevelSelector : MonoBehaviour
+public class ItemFirstVelocity : MonoBehaviour
 {
 
-    public void SelectLevel(int level)
-    {
-        SceneManager.LoadScene("L" + level);
-    }
+    private Rigidbody2D rb;
+    public float FirstVelocity;
 
     // Use this for initialization
     void Start()
     {
-
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(0, -FirstVelocity);
     }
 
     // Update is called once per frame
