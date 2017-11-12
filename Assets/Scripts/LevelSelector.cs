@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelector : MonoBehaviour
 {
+    public void StartGame() {
+        SceneManager.LoadScene("SelectLevel");
+    }
 
     public void SelectLevel(int level)
     {

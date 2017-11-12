@@ -108,6 +108,52 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &34517213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 34517215}
+  - component: {fileID: 34517214}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &34517214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 34517213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8dd410252397e643a3eda41a3eca793, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  board: {fileID: 1110670335}
+  ballPrefab: {fileID: 1213890620377122, guid: ec9cce08e5390e7469589ca724621af5, type: 2}
+  pauseMenu: {fileID: 410991094}
+  failMenu: {fileID: 876292468}
+  timeForItem: 20
+  slowScale: 0.8
+--- !u!4 &34517215
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 34517213}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.4430737, y: -7.326694, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &165120177
 Prefab:
   m_ObjectHideFlags: 0
@@ -584,7 +630,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 856064924}
+      - m_Target: {fileID: 34517214}
         m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
@@ -790,7 +836,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 856064924}
+      - m_Target: {fileID: 34517214}
         m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:
@@ -1251,7 +1297,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 856064924}
+      - m_Target: {fileID: 0}
         m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:
@@ -1863,7 +1909,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 856064924}
+      - m_Target: {fileID: 34517214}
         m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:
@@ -2133,7 +2179,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 856064924}
+      - m_Target: {fileID: 34517214}
         m_MethodName: Pause
         m_Mode: 1
         m_Arguments:
@@ -2191,7 +2237,6 @@ GameObject:
   - component: {fileID: 856064921}
   - component: {fileID: 856064920}
   - component: {fileID: 856064919}
-  - component: {fileID: 856064924}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2269,23 +2314,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &856064924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 856064918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8dd410252397e643a3eda41a3eca793, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  board: {fileID: 1110670335}
-  ballPrefab: {fileID: 1213890620377122, guid: ec9cce08e5390e7469589ca724621af5, type: 2}
-  pauseMenu: {fileID: 410991094}
-  failMenu: {fileID: 876292468}
-  timeForItem: 20
-  slowScale: 0.6
 --- !u!1 &876292468
 GameObject:
   m_ObjectHideFlags: 0
@@ -3110,7 +3138,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 856064924}
+      - m_Target: {fileID: 34517214}
         m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
@@ -3343,7 +3371,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 856064924}
+      - m_Target: {fileID: 34517214}
         m_MethodName: SoundSwitch
         m_Mode: 1
         m_Arguments:
@@ -3478,7 +3506,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 856064924}
+      - m_Target: {fileID: 34517214}
         m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
