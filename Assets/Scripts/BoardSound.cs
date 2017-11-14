@@ -21,7 +21,7 @@ public class BoardSound : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D c)
     {
-        if (!GameController.instance.Mute && !c.gameObject.GetComponent<BallActions>().Sticked)
+        if (GlobalControl.SoundOn && !c.gameObject.GetComponent<BallActions>().sticked)
         {
             asrc.Play();
         }

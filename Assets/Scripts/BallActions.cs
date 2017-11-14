@@ -3,37 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BallActions : MonoBehaviour {
+	private GameController gc;
 
 	private GameObject board;
 	private float distBoard;
-	private bool sticked = true;
-	private float offsetX = 0.0F;  // Offset from board when sticking.
-	private Rigidbody2D _rb;
 
-	public bool Sticked {
-		get { return sticked; }
-		set { sticked = value; }
-	}
+	[HideInInspector] public bool sticked = true;
+	[HideInInspector] public float offsetX = 0.0F;  // Offset from board when sticking.
+	[HideInInspector] public Rigidbody2D rb;
+	[HideInInspector] public float myVelocity;
 
-	public float OffsetX {
-		get { return offsetX; }
-		set { offsetX = value; }
-	}
-	
-	public Rigidbody2D rb {
-		get { return _rb; }
-		set { _rb = value; }
-	}
-
-	public float ShootSpeed;
-	public float MinTan;
+	private int combocnt = 0;
 	
 	public void MySetVelocityScale(float scale) {
 		rb.velocity = new Vector2(rb.velocity.x * scale, rb.velocity.y * scale);
+		myVelocity *= scale;
 	}
 
 	public void MyShoot() {
-		rb.velocity = new Vector3(0, ShootSpeed, 0);
+		rb.velocity = new Vector3(0, gc.ShootSpeed, 0);
 		sticked = false;
 	}
 
@@ -41,8 +29,10 @@ public class BallActions : MonoBehaviour {
 	void Start() {
 		board = GameController.instance.board;
 		rb = GetComponent<Rigidbody2D>();
+		gc = GameController.instance;
 		distBoard = (GetComponent<Collider2D>().bounds.size.y +
 			GameController.instance.board.GetComponent<Collider2D>().bounds.size.y) / 2.0F;
+		myVelocity = gc.ShootSpeed;
 	}
 
 	// Update is called once per frame
@@ -57,23 +47,30 @@ public class BallActions : MonoBehaviour {
 		}
 		Vector2 vv = rb.velocity;
 		float vtan = vv.y / vv.x;
-		if (vtan < MinTan && vtan > -MinTan) {
-			double theta = System.Math.Atan2(vv.y, vv.x);
-			float vabs = (float)System.Math.Sqrt(vv.x * vv.x + vv.y * vv.y);
-			vv.x = vabs * (float)System.Math.Cos(theta);
-			vv.y = vabs * (float)System.Math.Sin(theta);
+		int symx = vv.x > 0 ? 1 : -1;
+		int symy = vv.y > 0 ? 1 : -1;
+		double theta;
+		if (vtan < gc.MinTan && vtan > -gc.MinTan) {
+			theta = System.Math.Atan(gc.MinTan);
+			rb.velocity = new Vector2(System.Math.Abs(myVelocity * (float)System.Math.Cos(theta)) * symx,
+				System.Math.Abs(myVelocity * (float)System.Math.Sin(theta)) * symy);
+		} else {
+			theta = System.Math.Atan2(vv.y, vv.x);
+			rb.velocity = new Vector2(myVelocity * (float)System.Math.Cos(theta),
+				myVelocity * (float)System.Math.Sin(theta));
 		}
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
 		if (collision.gameObject.tag == "Ball") {
 			Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>(), true);
-		}
-	}
-
-	void OnCollisionExit2D(Collision2D collision) {
-		if (collision.gameObject.name == "Bottom") {
-			GameController.instance.DecBall(gameObject);
+		} else if (collision.gameObject.tag == "Brick") {
+			combocnt++;
+			if (combocnt >= gc.MaxCombo) {
+				gc.Star2 = 1;
+			}
+		} else if (collision.gameObject.tag == "Board") {
+			combocnt = 0;
 		}
 	}
 

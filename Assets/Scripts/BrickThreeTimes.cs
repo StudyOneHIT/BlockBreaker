@@ -27,7 +27,8 @@ public class BrickThreeTimes : MonoBehaviour {
 		} else if (life == 1) {
 			sr.sprite = break2;
 		} else {
-			Destroy (gameObject);
+			GameController.instance.ic.NewItem(transform);
+			GameController.instance.DecBrick(gameObject);
 		}
 	}
 }

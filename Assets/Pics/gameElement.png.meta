@@ -1,12 +1,17 @@
 fileFormatVersion: 2
 guid: 9baff4e8d62484a499963e287de8008f
-timeCreated: 1509537046
+timeCreated: 1510474353
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: gameElement_0
     21300002: gameElement_1
     21300004: gameElement_2
+    21300006: gameElement_3
+    21300008: gameElement_4
+    21300010: gameElement_5
+    21300012: gameElement_6
+    21300014: gameElement_7
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -120,6 +125,76 @@ TextureImporter:
         x: 439
         y: 666
         width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gameElement_3
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 705
+        width: 54
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gameElement_4
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 185
+        width: 53
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gameElement_5
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 62
+        width: 38
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gameElement_6
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 704
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gameElement_7
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 703
+        width: 36
         height: 35
       alignment: 0
       pivot: {x: 0, y: 0}

@@ -14,6 +14,6 @@ public class GameText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		text.text = "Life left: " + GameController.instance.Life;
+		text.text = "Life left: " + GameController.instance.life;
 	}
 }

@@ -16,6 +16,7 @@ public class Brick : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D c)
     {
-        Destroy(gameObject);
-    }
+		GameController.instance.ic.NewItem(transform);
+		GameController.instance.DecBrick(gameObject);
+	}
 }

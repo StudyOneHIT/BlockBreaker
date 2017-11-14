@@ -17,7 +17,7 @@ public class BoardBounce : MonoBehaviour {
     void OnCollisionExit2D(Collision2D collision)
     {
 		BallActions ba = collision.gameObject.GetComponent<BallActions> ();
-		if (!ba.Sticked && collision.gameObject.tag == "Ball")
+		if (!ba.sticked && collision.gameObject.tag == "Ball")
         {
 			Vector2 v = ba.rb.velocity;
             float vv = (float)System.Math.Sqrt(v.x * v.x + v.y * v.y);
