@@ -112,6 +112,7 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
 b5b1716867d8a38844f2d7651e115850 Assembly-CSharp.dll:.BoardMove
+840047760b6d37a220685d819ecbd768 Assembly-CSharp.dll:.SoundButtonCtrl
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Bottom
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GameText
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -140,6 +141,5 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 38b601b8c8f15f2bea56a4644ff3c050 Assembly-CSharp.dll:.ItemController
 b0f061460faa9f7dd7028fc4e037afea Assembly-CSharp.dll:.ItemFirstVelocity
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BoardBounce
-5aa5bf8c5e40635f54100ba960925e00 Assembly-CSharp.dll:.Menu
-840047760b6d37a220685d819ecbd768 Assembly-CSharp.dll:.SoundButtonCtrl
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BGMController
+5aa5bf8c5e40635f54100ba960925e00 Assembly-CSharp.dll:.Menu

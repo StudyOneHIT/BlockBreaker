@@ -157,10 +157,43 @@ public class GameController : MonoBehaviour {
 		startTime = Time.time;
 	}
 
+	private Vector2 TouchBegin = new Vector2(0,0);
+	private Vector2	TouchEnd = new Vector2(0,0);
+
+	private float TouchMinTime = 0.01f;
+	private float TouchTimer = 0;
+	private float TouchMinDist = 100;
+	
 	// Update is called once per frame
 	void Update() {
-		if (Input.GetKey("space") || 
-			(mobile && Input.touches[0].phase == TouchPhase.Moved)) {
+		
+		if (mobile) {
+			if (Input.touches[0].phase == TouchPhase.Began) {
+				TouchBegin = Input.touches[0].position;
+			}
+			if (Input.touches[0].phase == TouchPhase.Moved) {
+				TouchTimer += Time.deltaTime;
+				if (TouchTimer > TouchMinTime) {
+					TouchEnd = Input.touches[0].position;
+				}
+				Vector2 ofst = TouchEnd - TouchBegin;
+				if (TouchBegin.x > 0 && TouchEnd.x > 0 &&
+				    ofst.x * ofst.x + ofst.y * ofst.y >= TouchMinDist * TouchMinDist) {
+					foreach (GameObject ball in balls) {
+						BallActions ba = ball.GetComponent<BallActions>();
+						if (ba.sticked) {
+							ba.MyShoot();
+							break;
+						}
+					}
+				}
+				TouchTimer = 0;
+				TouchBegin = TouchEnd;
+			}
+			
+		}
+		
+		if (Input.GetKey("space")) {
 			foreach (GameObject ball in balls) {
 				BallActions ba = ball.GetComponent<BallActions>();
 				if (ba.sticked) {
@@ -168,7 +201,10 @@ public class GameController : MonoBehaviour {
 					break;
 				}
 			}
-		} else if (mobile && (Input.GetKeyDown(KeyCode.Escape))) {
+		}
+		
+		if (Application.platform == RuntimePlatform.Android &&
+		    (Input.GetKeyDown(KeyCode.Escape))) {
 			Pause();
 		}
 	}
