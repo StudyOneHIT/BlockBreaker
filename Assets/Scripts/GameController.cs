@@ -88,6 +88,12 @@ public class GameController : MonoBehaviour {
 			default:
 				break;
 		}
+		int score = Star2 + Star3 + 1;
+		string key = "Score_" + SceneManager.GetActiveScene().name;
+		PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score", 0) + score);
+		if (score > PlayerPrefs.GetInt(key, 0)) {
+			PlayerPrefs.SetInt(key, score);
+		}
 	}
 
 	/*

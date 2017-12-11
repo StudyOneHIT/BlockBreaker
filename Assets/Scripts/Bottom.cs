@@ -20,7 +20,8 @@ public class Bottom : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D collider) {
-		Destroy(collider.gameObject);
+	void OnTriggerEnter2D(Collider2D cld) {
+		Destroy(cld.gameObject);
+		GameController.instance.ic.RecycleItem(cld.gameObject.tag);
 	}
 }

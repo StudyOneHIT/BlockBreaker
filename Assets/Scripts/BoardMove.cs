@@ -29,6 +29,7 @@ public class BoardMove : MonoBehaviour {
 		res = Screen.resolutions;
 		gc = GameController.instance;
 		BorderPos = (gc.maxWidth - GetComponent<Collider2D>().bounds.size.x) / 2.0F;
+		MoveSpeed *= 1.2F;
 	}
 
 	// Update is called once per frame

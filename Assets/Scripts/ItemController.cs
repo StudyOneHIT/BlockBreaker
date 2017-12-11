@@ -14,7 +14,7 @@ public class ItemController : MonoBehaviour {
 	public GameObject OppositeSprite;
 
 	// Items
-	private int itemNum = 6;
+	public const int itemNum = 6;
 	public const int SLOWDOWN = 0;
 	public const int STICKY = 1;
 	public const int OPPOSITE = 2;
@@ -28,6 +28,23 @@ public class ItemController : MonoBehaviour {
 	private int itemCount = 0;
 	private float dtimer = 0;
 
+	public static int GetItemIndex(string item) {
+		if (item == "SlowDown") {
+			return SLOWDOWN;
+		} else if (item == "Split") {
+			return SPLIT;
+		} else if (item == "LargerBoard") {
+			return LARGER;
+		} else if (item == "ShorterBoard") {
+			return SHORTER;
+		} else if (item == "Opposite") {
+			return OPPOSITE;
+		} else if (item == "Sticky") {
+			return STICKY;
+		}
+		return -1;
+	}
+
 	public void NewItem(Transform transform) {
 		System.Random random = new System.Random();
 		if (random.Next(0, 100) <= ItemRate * 100 && itemCount <= MaxItem) {
@@ -36,6 +53,7 @@ public class ItemController : MonoBehaviour {
 			//int iItem = 1;
 			if (ItemEnabled[iItem]) return;
 			Instantiate(itemPrefabs[iItem], transform.position, transform.rotation);
+			ItemEnabled[iItem] = true;
 		}
 	}
 
@@ -72,6 +90,10 @@ public class ItemController : MonoBehaviour {
 		} else {
 			itemCount--;
 		}
+	}
+
+	public void RecycleItem(string item) {
+		ItemEnabled[GetItemIndex(item)] = false;
 	}
 
 	void DetectItem() {

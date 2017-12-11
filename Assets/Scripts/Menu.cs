@@ -1,38 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+// using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
 	public GameObject MainMenu;
-	public GameObject LevelSl;
-	public GameObject SettingObj;
+	public GameObject LevelMenu;
+	public GameObject StoreMenu;
+	public GameObject SettingMenu;
+	public GameObject HelpMenu;
 
 	private int scene = 0;
 
-	public void GoBack() {
+	public void BackToMain() {
 		scene = 0;
 		MainMenu.SetActive(true);
-		LevelSl.SetActive(false);
+		LevelMenu.SetActive(false);
+		StoreMenu.SetActive(false);
+		SettingMenu.SetActive(false);
+		HelpMenu.SetActive(false);
 	}
 
-	public void StartGame() {
+	public void LoadLevelMenu() {
 		scene = 1;
-		MainMenu.SetActive(false);
-		LevelSl.SetActive(true);
+		LevelMenu.SetActive(true);
 	}
 
-	public void Settings() {
+	public void LoadSetting() {
 		scene = 2;
-		SettingObj.SetActive(true);
+		SettingMenu.SetActive(true);
 	}
 
-	public void GoBackFromSet() {
-		scene = 0;
-		SettingObj.SetActive(false);
+	public void LoadStore() {
+		scene = 3;
+		StoreMenu.SetActive(true);
 	}
 
+	public void LoadHelp() {
+		scene = 4;
+		HelpMenu.SetActive(true);
+	}
+	
 	public void ExitAsk() {
 		Application.Quit();
 	}
@@ -52,10 +62,8 @@ public class Menu : MonoBehaviour {
 			(Input.GetKeyDown(KeyCode.Escape))) {
 			if (scene == 0) {
 				ExitAsk();
-			} else if (scene == 1) {
-				GoBack();
-			} else if (scene == 2) {
-				GoBackFromSet();
+			} else {
+				BackToMain();
 			}
 		}
 	}

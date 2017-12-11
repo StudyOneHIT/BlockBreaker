@@ -25,10 +25,13 @@
           <e p="GameController.cs" t="Include" />
           <e p="GameText.cs" t="Include" />
           <e p="GlobalControl.cs" t="Include" />
+          <e p="ItemBar.cs" t="Include" />
           <e p="ItemController.cs" t="Include" />
           <e p="ItemFirstVelocity.cs" t="Include" />
           <e p="Menu.cs" t="Include" />
+          <e p="MenuShowStar.cs" t="Include" />
           <e p="SoundButtonCtrl.cs" t="Include" />
+          <e p="Store.cs" t="Include" />
         </e>
       </e>
       <e p="BlockBreaker.sln" t="IncludeFlat" />
